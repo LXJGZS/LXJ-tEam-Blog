@@ -1,4 +1,3 @@
-
 import FlipCard from '@/components/FlipCard'
 import Link from 'next/link'
 import CONFIG from '../config'

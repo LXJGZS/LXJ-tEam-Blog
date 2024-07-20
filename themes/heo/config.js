@@ -5,9 +5,8 @@ const CONFIG = {
 
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   HEO_NOTICE_BAR: [
-    { title: '欢迎来到LXJ tEam官方站' },
+    { title: '欢迎来到LXJ tEam官方站', url: 'https://lxjteam.zeabur.app' },
     { title: '也许你想：访问旧网站', url: 'https://lxjteamb.zeabur.app' },
-    { title: '也许你想：访问导航站', url: 'https://lxjteamd.zeabur.app' },
   ],
 
   // 英雄区左右侧组件颠倒位置
