@@ -108,6 +108,6 @@ const CONFIG = {
   HEO_SOCIAL_CARD_TITLE_1: 'LINUX DO',
   HEO_SOCIAL_CARD_TITLE_2: '访问我们的L站账号',
   HEO_SOCIAL_CARD_TITLE_3: '点击访问L站',
-  HEO_SOCIAL_CARD_URL: 'https://https://linux.do/u/lxj/summary',
+  HEO_SOCIAL_CARD_URL: 'https://linux.do/u/lxj/summary',
 }
 export default CONFIG
