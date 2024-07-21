@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useImperativeHandle, useRef, useState } from 'react'
 import CONFIG from '../config'
-
 /**
  * 顶部英雄区
  * 左右布局，
@@ -28,17 +27,14 @@ const Hero = props => {
            recent-post-top rounded-[12px] 2xl:px-5 recent-top-post-group max-w-[86rem] overflow-x-scroll w-full mx-auto flex-row flex-nowrap flex relative`}>
         {/* 左侧banner组 */}
         <BannerGroup {...props} />
-
         {/* 中间留白 */}
         <div className='px-1.5 h-full'></div>
-
         {/* 右侧置顶文章组 */}
         <TopGroup {...props} />
       </div>
     </div>
   )
 }
-
 /**
  * 英雄区左侧banner组
  * @returns
@@ -56,7 +52,6 @@ function BannerGroup(props) {
     </div>
   )
 }
-
 /**
  * 英雄区左上角banner动图
  * @returns
@@ -72,7 +67,6 @@ function Banner(props) {
     const randomPost = allNavPages[randomIndex]
     router.push(`${siteConfig('SUB_PATH', '')}/${randomPost?.slug}`)
   }
-
   return (
     <div
       id='banners'
@@ -88,10 +82,8 @@ function Banner(props) {
           {siteConfig('HEO_HERO_TITLE_3', null, CONFIG)}
         </div>
       </div>
-
       {/* 斜向滚动的图标 */}
       <TagsGroupBar />
-
       {/* 遮罩 */}
       <div
         id='banner-cover'
@@ -109,7 +101,6 @@ function Banner(props) {
     </div>
   )
 }
-
 /**
  * 图标滚动标签组
  * 英雄区左上角banner条中斜向滚动的图标
@@ -118,7 +109,6 @@ function TagsGroupBar() {
   const groupIcons = siteConfig('HEO_GROUP_ICONS', null, CONFIG).concat(
     siteConfig('HEO_GROUP_ICONS', null, CONFIG)
   )
-
   return (
     <div className='tags-group-all flex -rotate-[30deg] h-full'>
       <div className='tags-group-wrapper flex flex-nowrap absolute top-16'>
@@ -156,7 +146,6 @@ function TagsGroupBar() {
     </div>
   )
 }
-
 /**
  * 英雄区左下角3个指定分类按钮
  * @returns
@@ -168,7 +157,6 @@ function GroupMenu() {
   const title_2 = siteConfig('HEO_HERO_CATEGORY_2', {}, CONFIG)?.title || ''
   const url_3 = siteConfig('HEO_HERO_CATEGORY_3', {}, CONFIG)?.url || ''
   const title_3 = siteConfig('HEO_HERO_CATEGORY_3', {}, CONFIG)?.title || ''
-
   return (
     <div className='h-[165px] select-none xl:h-20 flex flex-col justify-between xl:space-y-0 xl:flex-row w-28 lg:w-48 xl:w-full xl:flex-nowrap xl:space-x-3'>
       <Link
@@ -208,7 +196,6 @@ function GroupMenu() {
     </div>
   )
 }
-
 /**
  * 置顶文章区域
  */
@@ -219,10 +206,8 @@ function TopGroup(props) {
   function handleMouseLeave() {
     todayCardRef.current.coverUp()
   }
-
   // 获取置顶推荐文章
   const topPosts = getTopPosts({ latestPosts, allNavPages })
-
   return (
     <div
       id='hero-right-wrapper'
@@ -259,7 +244,6 @@ function TopGroup(props) {
     </div>
   )
 }
-
 /**
  * 获取推荐置顶文章
  */
@@ -271,10 +255,8 @@ function getTopPosts({ latestPosts, allNavPages }) {
   ) {
     return latestPosts
   }
-
   // 显示包含‘推荐’标签的文章
   let sortPosts = []
-
   // 排序方式
   if (
     JSON.parse(
@@ -289,7 +271,6 @@ function getTopPosts({ latestPosts, allNavPages }) {
   } else {
     sortPosts = Object.create(allNavPages)
   }
-
   const topPosts = []
   for (const post of sortPosts) {
     if (topPosts.length === 6) {
@@ -306,7 +287,6 @@ function getTopPosts({ latestPosts, allNavPages }) {
   }
   return topPosts
 }
-
 /**
  * 英雄区右侧，今日卡牌
  * @returns
@@ -317,7 +297,6 @@ function TodayCard({ cRef, siteInfo }) {
   const { locale } = useGlobal()
   // 卡牌是否盖住下层
   const [isCoverUp, setIsCoverUp] = useState(true)
-
   /**
    * 外部可以调用此方法
    */
@@ -328,7 +307,6 @@ function TodayCard({ cRef, siteInfo }) {
       }
     }
   })
-
   /**
    * 查看更多
    * @param {*} e
@@ -337,7 +315,6 @@ function TodayCard({ cRef, siteInfo }) {
     e.stopPropagation()
     setIsCoverUp(false)
   }
-
   /**
    * 点击卡片跳转的链接
    * @param {*} e
@@ -345,7 +322,6 @@ function TodayCard({ cRef, siteInfo }) {
   function handleCardClick(e) {
     router.push(link)
   }
-
   return (
     <div
       id='today-card'
@@ -372,6 +348,20 @@ function TodayCard({ cRef, siteInfo }) {
               {siteConfig('HEO_HERO_TITLE_5', null, CONFIG)}
             </div>
           </div>
+          {/* 查看更多的按钮 */}
+          <div
+            onClick={handleClickShowMore}
+            className={`'${isCoverUp ? '' : 'hidden pointer-events-none'} z-10 group flex items-center px-3 h-10 justify-center  rounded-3xl
+            glassmorphism transition-colors duration-100 `}>
+            <PlusSmall
+              className={
+                'group-hover:rotate-180 duration-500 transition-all w-6 h-6 mr-2 bg-white rounded-full stroke-black'
+              }
+            />
+            <div id='more' className='select-none'>
+              {locale.COMMON.MORE}
+            </div>
+          </div>
         </div>
 
         {/* 封面图 */}
@@ -387,5 +377,4 @@ function TodayCard({ cRef, siteInfo }) {
     </div>
   )
 }
-
 export default Hero
