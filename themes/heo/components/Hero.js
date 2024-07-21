@@ -329,23 +329,6 @@ function TodayCard({ cRef, siteInfo }) {
     }
   })
 
-  /**
-   * 查看更多
-   * @param {*} e
-   */
-  function handleClickShowMore(e) {
-    e.stopPropagation()
-    setIsCoverUp(false)
-  }
-
-  /**
-   * 点击卡片跳转的链接
-   * @param {*} e
-   */
-  function handleCardClick(e) {
-    router.push(link)
-  }
-
   return (
     <div
       id='today-card'
