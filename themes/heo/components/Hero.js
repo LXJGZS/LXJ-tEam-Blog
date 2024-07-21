@@ -307,21 +307,7 @@ function TodayCard({ cRef, siteInfo }) {
       }
     }
   })
-  /**
-   * 查看更多
-   * @param {*} e
-   */
-  function handleClickShowMore(e) {
-    e.stopPropagation()
-    setIsCoverUp(false)
-  }
-  /**
-   * 点击卡片跳转的链接
-   * @param {*} e
-   */
-  function handleCardClick(e) {
-    router.push(link)
-  }
+
   return (
     <div
       id='today-card'
@@ -348,22 +334,7 @@ function TodayCard({ cRef, siteInfo }) {
               {siteConfig('HEO_HERO_TITLE_5', null, CONFIG)}
             </div>
           </div>
-          {/* 查看更多的按钮 */}
-          <div
-            onClick={handleClickShowMore}
-            className={`'${isCoverUp ? '' : 'hidden pointer-events-none'} z-10 group flex items-center px-3 h-10 justify-center  rounded-3xl
-            glassmorphism transition-colors duration-100 `}>
-            <PlusSmall
-              className={
-                'group-hover:rotate-180 duration-500 transition-all w-6 h-6 mr-2 bg-white rounded-full stroke-black'
-              }
-            />
-            <div id='more' className='select-none'>
-              {locale.COMMON.MORE}
-            </div>
-          </div>
         </div>
-
         {/* 封面图 */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
